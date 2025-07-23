@@ -12,5 +12,5 @@ LIB_DIR="lib/"
 CODE_FILES=$(find src/ -name "*.cpp")
 
 # Build command
-$CC $CODE_FILES $LIB_DIR/libraylib.mac.a -o app $CFLAGS -I $INCLUDE_DIR -L $LIB_DIR -lraylib.mac -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+$CC $CODE_FILES $LIB_DIR/libraylib.mac.a $LIB_DIR/libferox.mac.a -o app $CFLAGS -I $INCLUDE_DIR -L $LIB_DIR -lraylib.mac -lferox.mac -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 ./app

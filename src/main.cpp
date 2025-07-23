@@ -57,6 +57,7 @@ void UpdateDrawFrame()
 {
     const float dt = 1.0f / 60.0f;
     frStepWorld(world, dt);
+    frSetBodyAngle(box, 0);
 
     BeginDrawing();
     ClearBackground(RAYWHITE);
@@ -81,6 +82,20 @@ void UpdateDrawFrame()
         frAddBodyToWorld(world, newBox);
 
         boxes.push_back(newBox);
+    }
+
+    if (IsKeyDown(KEY_A))
+    {
+        frApplyForceToBody(box, {frGetBodyPosition(box).x, frGetBodyPosition(box).y}, {-10, 0});
+    }
+    if (IsKeyDown(KEY_D))
+    {
+        frApplyForceToBody(box, {frGetBodyPosition(box).x, frGetBodyPosition(box).y}, {10, 0});
+    }
+
+    if (IsKeyPressed(KEY_SPACE))
+    {
+        frApplyForceToBody(box, {frGetBodyPosition(box).x, frGetBodyPosition(box).y}, {0, -500});
     }
 
 	std::string info_str = "Bodies: " + std::to_string(frGetBodyCountInWorld(world));
